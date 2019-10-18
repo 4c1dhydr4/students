@@ -1,0 +1,66 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+
+{% block breadTitle %}Notas{% endblock %}
+{% block breadNav %}
+	<li><a href="{% url 'home:index' %}">Virtual Lab</a></li>
+	<li><a href="{% url 'students:index' %}">Estudiante</a></li>
+	<li class="active">Notas</li>
+{% endblock %}
+{% block content %}
+	<div class="row">
+		<div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong class="card-title">Cursos Actuales</strong>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Curso</th>
+                                <th scope="col">Primer Trimestre</th>
+                                <th scope="col">Segundo Trimestre</th>
+                                <th scope="col">Tercer Trimestre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        	{% for course in courses %}
+                            <tr>
+                                <th scope="row">{{course.name}}</th>
+                				{% for period in course.notas %}
+                                <td>
+                            		<table class="table table-bordered">
+                            			<thead>
+                            				<th>T1</th>
+                            				<th>T2</th>
+                            				<th>T3</th>
+                            				<th>T4</th>
+                            				<th>Parcial</th>
+                            				<th>Final</th>
+                            				<th>Promedio</th>
+                            			</thead>
+                            			<tbody>
+                        				<tr>
+                        					<td>{{period.T1}}</td>
+                            				<td>{{period.T2}}</td>
+                            				<td>{{period.T3}}</td>
+                            				<td>{{period.T4}}</td>
+                            				<td>{{period.EP}}</td>
+                            				<td>{{period.EF}}</td>
+                            				<td>{{period.average}}</td>
+                            			</tr>
+                            			</tbody>
+                            		</table>
+                                </td>
+                				{% endfor %}
+                            </tr>
+                            {% empty %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+		</div>
+	</div>
+{% endblock %}

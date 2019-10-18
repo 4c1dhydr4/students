@@ -1,0 +1,157 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    {% block breadcrumbs %}
+    {% endblock %}
+	<div class="row">
+		<div class="col-xl-8">
+            <aside class="profile-nav alt">
+                <section class="card">
+                    <div class="card-header user-header alt bg-dark">
+                        <div class="media">
+                            <a href="#">
+                                <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="{{photo}}">
+                            </a>
+                            <div class="media-body">
+                                <h2 class="text-light display-6">{{name}}</h2>
+                                <p>{{grade}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                   <div class="row">
+                   		<div class="col-md-6">
+							<ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <i class="fa fa-qrcode"></i> Código de Estudiante <span class="pull-right">{{code}}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-barcode"></i> Documento de Identidad <span class="pull-right">{{dni}}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-envelope-o"></i> Correo Electrónico <span class="pull-right">{{email}}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-map-marker"></i> Dirección <span class="pull-right">{{direction}}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-phone"></i> Teléfono <span class="pull-right">{{phone}}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-mobile"></i> Celular <span class="pull-right">{{cellphone}}</span>
+                                </li>
+                            </ul>
+                   		</div>
+                   		<div class="col-md-6">
+							<ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <i class="fa fa-calendar-o"></i> Fecha de Nacimiento <span class="pull-right">{{bornDate}}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-check-square-o"></i> Fecha de Ingreso <span class="pull-right">{{firstDate}}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-bookmark-o"></i> Promedio Anual <span class="pull-right">{{actual_average}}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-flag-checkered"></i> Promedio Global <span class="pull-right">{{global_average}}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-list-ol"></i> Mérito por Grado <span class="pull-right">{{order_of_merit}}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-trophy"></i> Mérito Global <span class="pull-right">{{global_order_of_merit}}</span>
+                                </li>
+                            </ul>
+                   		</div>
+                   </div>
+                </section>
+            </aside>
+		</div>
+		<div class="col-xl-4">
+			<div class="row">
+	            <div class="col-md-12">
+	                <div class="card">
+	                    <div class="card-body">
+	                        <div class="stat-widget-five">
+	                            <div class="stat-icon dib flat-color-1">
+	                                <i class="ti-bookmark-alt"></i>
+	                            </div>
+	                            <div class="stat-content">
+	                                <div class="text-left dib"> 
+	                                    <div class="stat-text">Notas</div>
+	                                    <div class="stat-heading"><a href="{% url 'students:my_notes' %}">Ver</a></div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-md-12">
+	                <div class="card">
+	                    <div class="card-body">
+	                        <div class="stat-widget-five">
+	                            <div class="stat-icon dib flat-color-2">
+	                                <i class="ti-ruler-pencil"></i>
+	                            </div>
+	                            <div class="stat-content">
+	                                <div class="text-left dib"> 
+	                                    <div class="stat-text">Cursos</div>
+	                                    <div class="stat-heading"><a href="">Ver</a></div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-md-12">
+	                <div class="card">
+	                    <div class="card-body">
+	                        <div class="stat-widget-five">
+	                            <div class="stat-icon dib flat-color-3">
+	                                <i class="ti-package"></i>
+	                            </div>
+	                            <div class="stat-content">
+	                                <div class="text-left dib"> 
+	                                    <div class="stat-text">Historial Académico</div>
+	                                    <div class="stat-heading"><a href="">Ver</a></div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+		</div>
+		<div class="col-xl-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="mb-3">Rendimiento Académico </h4>
+                    <canvas id="student-history"></canvas>
+                </div>
+            </div>
+		</div>
+		<div class="col-xl-4">
+	        <div class="card">
+	            <div class="card-body">
+	                <h4 class="mb-3">Promedio Acumulado </h4>
+	                <canvas id="average-courses"></canvas>
+	            </div>
+	        </div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block extrahead %}
+	<link rel="stylesheet" href="{% static 'assets/css/flag-icon.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/css/cs-skin-elastic.css' %}">
+{% endblock %}
+
+{% block extrajs %}
+	<!--  Chart js -->
+	<script src="{% static 'assets/js/lib/chart-js/Chart.bundle.js' %}"></script>
+	<!--  Student Charset -->
+	<script src="{% static 'assets/js/lib/chart-js/chartjs-student-profile.js' %}"></script>
+{% endblock %}

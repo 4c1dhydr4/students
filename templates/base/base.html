@@ -1,0 +1,235 @@
+<!doctype html>
+{% load staticfiles %}
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sync Student</title>
+    <meta name="description" content="Sync Student">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" type="image/x-icon"  href="{% static 'images/favicon.ico' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
+
+    <link rel="stylesheet" href="{% static 'assets/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/pe-icon-7-filled.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    {% block extrahead %}
+    {% endblock %}
+    {% endblock %}
+</head>
+<body>
+
+   {% block leftPanel %}
+    <!-- Left Panel --> 
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default"> 
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="{% url 'home:index' %}"><i class="menu-icon fa fa-laptop"></i>Student Panel</a>
+                    </li>
+                    <li class="menu-title">Virtual Lab</li><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Estudiantes</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-user"></i><a href="{% url 'students:my_profile' %}">Mi Perfíl</a></li>
+                            <li><i class="ti-bookmark-alt"></i><a href="{% url 'students:my_notes' %}">Notas</a></li>
+                            <li><i class="ti-pencil"></i><a href="{% url 'students:my_courses' %}">Cursos</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel --> 
+    <!-- Left Panel -->
+    {% endblock %}
+
+   {% block rightPanel %}
+    <!-- Right Panel --> 
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">  
+            <div class="top-left">
+                <div class="navbar-header"> 
+                    <a class="navbar-brand" href="{% url 'home:index' %}"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
+                    <a class="navbar-brand hidden" href="{% url 'home:index' %}"><img src="{% static 'images/logo2.png' %}" alt="Logo"></a> 
+                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a> 
+                </div> 
+            </div>
+            <div class="top-right"> 
+                <div class="header-menu"> 
+                    <div class="header-left">
+                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        <div class="form-inline">
+                            <form class="search-form">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar">
+                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                            </form>
+                        </div>
+
+                        <div class="dropdown for-notification">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell"></i>
+                                <span class="count bg-danger">3</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="notification">
+                                <p class="red">Tienes 3 Notificaciones</p>
+                                <a class="dropdown-item media" href="#">
+                                    <i class="fa fa-thumb-tack"></i>
+                                    <p>Trabajo Recibido</p>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <i class="fa fa-info"></i>
+                                    <p>Nueva Tarea Añadida</p>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <i class="fa fa-warning"></i>
+                                    <p>Próximo cierre de Tarea</p>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown for-message">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-envelope"></i>
+                                <span class="count bg-primary">4</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="message">
+                                <p class="red">You have 4 Mails</p>
+                                <a class="dropdown-item media" href="#">
+                                    <span class="photo media-left"><img alt="avatar" src="{% static 'images/avatar/1.jpg' %}"></span>
+                                    <div class="message media-body">
+                                        <span class="name float-left">Augusto Burga</span>
+                                        <span class="time float-right">Justo Ahora</span>
+                                        <p>Creación de Manual de Usuario</p>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <span class="photo media-left"><img alt="avatar" src="{% static 'images/avatar/2.jpg' %}"></span>
+                                    <div class="message media-body">
+                                        <span class="name float-left">Valeria Chávez</span>
+                                        <span class="time float-right">Hace 5 Minutos</span>
+                                        <p>Trabajo T2</p>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <span class="photo media-left"><img alt="avatar" src="{% static 'images/avatar/3.jpg' %}"></span>
+                                    <div class="message media-body">
+                                        <span class="name float-left">Elizabeth Stonem</span>
+                                        <span class="time float-right">Hace 2 Horas</span>
+                                        <p>Te envío mi parte del trabajo</p>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <span class="photo media-left"><img alt="avatar" src="{% static 'images/avatar/4.jpg' %}"></span>
+                                    <div class="message media-body">
+                                        <span class="name float-left">Tilsa Lozano</span>
+                                        <span class="time float-right">Hace 1 día</span>
+                                        <p>Empresa para investigación</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="{{user_photo}}" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="{% url 'students:my_profile' %}"><i class="fa fa-user"></i>Mi Perfil</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-bell-o"></i>Notificaciones <span class="count">3</span></a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-cog"></i>Configuración</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i>Salir</a>
+                        </div>
+                    </div> 
+                </div>  
+            </div>
+        </header><!-- /header -->
+        <!-- Header-->
+
+        {% block breadcrumbs %}
+        <div class="breadcrumbs">
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>{% block breadTitle %}{% endblock %}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="page-header float-right">
+                            <div class="page-title">
+                                <ol class="breadcrumb text-right">
+                                    {% block breadNav %}
+                                    <li><a href="#">Dashboard</a></li>
+                                    <li><a href="#">Table</a></li>
+                                    <li class="active">Basic table</li>
+                                    {% endblock %}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+        <div class="content pb-0">
+        {% block content %}
+        {% endblock %}
+        </div> <!-- .content -->
+
+
+
+        <div class="clearfix"></div>
+
+        <footer class="site-footer">
+            <div class="footer-inner bg-white">
+                <div class="row">
+                    <div class="col-sm-6">
+                        Copyright &copy; Synapse Systems 2018
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        Template Designed by <a href="https://colorlib.com">Colorlib</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div><!-- /#right-panel -->
+    {% endblock %}
+
+
+    <script src="{% static 'assets/js/vendor/jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    {% block extrajs %}
+    {% endblock %}
+
+<div id="container">
+  
+ 
+  
+</div>
+
+
+
+</body>
+</html>
