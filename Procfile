@@ -1,1 +1,1 @@
-web: gunicorn syncStudents.wsgi --log-file -
+web gunicorn syncStudents.wsgi --log-file -

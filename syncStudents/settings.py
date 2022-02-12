@@ -11,7 +11,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-ADMINS = [('Sync Students', 'syncstudents@synapsesystems.tech')]
+ADMINS = [('Sync Students', 'lburga@synapse.pe')]
 
 LOGGING_CONFIG = None
 
@@ -94,6 +94,7 @@ DATABASES = {
 }
 
 DATABASES['default'].update(db_from_env)
+
 DJANGO_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -102,6 +103,7 @@ DJANGO_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 )
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
