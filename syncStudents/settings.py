@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'syncStudents.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'syncStudents',
+        'NAME': 'students',
         'USER': 'postgres',
-        'PASSWORD': 'DarPa391',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost',
         'PORT': 5432,
     }
