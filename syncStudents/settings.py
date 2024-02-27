@@ -93,8 +93,6 @@ DATABASES = {
     }
 }
 
-DATABASES['default'].update(db_from_env)
-
 DJANGO_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
